@@ -73,7 +73,6 @@ function virar(carta){
         carta.classList.remove('frente');
         second = carta;
         exposed.push(carta.innerHTML);
-        console.log(JSON.stringify(first.classList));
         setTimeout(isequal,1200);
     }
     
@@ -90,5 +89,25 @@ function isequal(){
             exposed = [];
         }
     }
-   // endgame();
+    endgame();
 }
+let desvira;
+let desviradas;
+let restart;
+
+function endgame(){
+    let hidden = document.querySelectorAll(".frente")
+    let desviradas = document.querySelectorAll(".card")
+    console.log(desviradas.length);
+    if(hidden.length === 0){
+        alert(`Parabéns! Você ganhou o jogo em ${contajogadas} jogadas! 🥳`);
+        restart = prompt("Gostaria de reiniciar a partida ❓");
+        if(restart==='sim'){
+            location.reload()
+        }else if(restart==='não'){
+            alert("Muito obrigada por jogar 💖");
+        }
+            
+    }
+}
+
