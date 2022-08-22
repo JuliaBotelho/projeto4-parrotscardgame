@@ -59,3 +59,36 @@ function startgame(){
 
 startgame();
 
+let contajogadas = 0 ;
+let exposed = [];
+let first;
+let second;
+
+function virar(carta){
+    if(exposed.length === 0 && carta.classList.contains('frente')==true){
+        carta.classList.remove('frente');
+        first = carta;
+        exposed.push(carta.innerHTML);
+    }else if (exposed.length === 1 && carta.classList.contains('frente')==true){
+        carta.classList.remove('frente');
+        second = carta;
+        exposed.push(carta.innerHTML);
+        console.log(JSON.stringify(first.classList));
+        setTimeout(isequal,1200);
+    }
+    
+} 
+
+function isequal(){
+    contajogadas++;
+    if(exposed.length===2){
+        if(JSON.stringify(first.classList)===JSON.stringify(second.classList)){
+            exposed = [];
+        }else{
+            first.classList.add('frente');
+            second.classList.add('frente');
+            exposed = [];
+        }
+    }
+   // endgame();
+}
